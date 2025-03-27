@@ -116,11 +116,11 @@ class OneSignalClient
     }
 
     private function requiresAuth() {
-        $this->headers['headers']['Authorization'] = 'Basic '.$this->restApiKey;
+        $this->headers['headers']['Authorization'] = 'Key '.$this->restApiKey;
     }
 
     private function requiresUserAuth() {
-        $this->headers['headers']['Authorization'] = 'Basic '.$this->userAuthKey;
+        $this->headers['headers']['Authorization'] = 'Key '.$this->userAuthKey;
     }
 
     private function usesJSON() {
@@ -149,7 +149,10 @@ class OneSignalClient
         $params = array(
             'app_id' => $this->appId,
             'contents' => $contents,
-            'include_player_ids' => is_array($userId) ? $userId : array($userId)
+            'include_aliases' => [
+                'onesignal_id' => is_array($userId) ? $userId : array($userId)
+            ],
+            'target_channel' => 'push'
         );
 
         if (isset($url)) {
@@ -381,7 +384,7 @@ class OneSignalClient
         $this->usesJSON();
 
         if (isset($parameters['api_key'])) {
-            $this->headers['headers']['Authorization'] = 'Basic '.$parameters['api_key'];
+            $this->headers['headers']['Authorization'] = 'Key '.$parameters['api_key'];
         }
 
         // Make sure to use app_id
@@ -397,7 +400,7 @@ class OneSignalClient
         $parameters = array_merge($parameters, $this->additionalParams);
 
         $this->headers['body'] = json_encode($parameters);
-        $this->headers['buttons'] = json_encode($parameters);
+//        $this->headers['buttons'] = json_encode($parameters);
         $this->headers['verify'] = false;
         return $this->post(self::ENDPOINT_NOTIFICATIONS);
     }
