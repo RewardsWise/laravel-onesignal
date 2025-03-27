@@ -5,7 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = new Dotenv\Dotenv(__DIR__."/../");
 $dotenv->load();
 
-$client = new Berkayk\OneSignal\OneSignalClient(
+$client = new RewardsWise\OneSignal\OneSignalClient(
     getenv('APP_ID'),
     getenv('REST_API_URL'),
     getenv('REST_API_KEY'),

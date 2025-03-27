@@ -1,6 +1,6 @@
 <?php
 
-namespace Berkayk\OneSignal;
+namespace RewardsWise\OneSignal;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -39,7 +39,7 @@ class OneSignalServiceProvider extends ServiceProvider
             return new OneSignalClient($config['app_id'], $config['rest_api_key'], $config['user_auth_key'] , $config['guzzle_client_timeout'], $config['rest_api_url']);
         });
 
-        $this->app->alias('onesignal', 'Berkayk\OneSignal\OneSignalClient');
+        $this->app->alias('onesignal', 'RewardsWise\OneSignal\OneSignalClient');
     }
 
     public function provides() {

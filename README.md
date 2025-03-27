@@ -19,7 +19,7 @@ the steps that is necessary to obtain an application id and REST API Keys.
 First, you'll need to require the package with Composer:
 
 ```sh
-composer require berkayk/onesignal-laravel
+composer require rewards-wise/onesignal-laravel
 ```
 
 Afterwards, run `composer update` from your command line.
@@ -31,7 +31,7 @@ Then, update `config/app.php` by adding an entry for the service provider.
 ```php
 'providers' => [
 	// ...
-	Berkayk\OneSignal\OneSignalServiceProvider::class
+	RewardsWise\OneSignal\OneSignalServiceProvider::class
 ];
 ```
 
@@ -40,7 +40,7 @@ Then, register class alias by adding an entry in aliases section
 ```php
 'aliases' => [
 	// ...
-	'OneSignal' => Berkayk\OneSignal\OneSignalFacade::class
+	'OneSignal' => RewardsWise\OneSignal\OneSignalFacade::class
 ];
 ```
 
@@ -48,7 +48,7 @@ Then, register class alias by adding an entry in aliases section
 Finally, from the command line again, run 
 
 ```
-php artisan vendor:publish --provider="Berkayk\OneSignal\OneSignalServiceProvider" --tag="config"
+php artisan vendor:publish --provider="RewardsWise\OneSignal\OneSignalServiceProvider" --tag="config"
 ``` 
 
 to publish the default configuration file. 
